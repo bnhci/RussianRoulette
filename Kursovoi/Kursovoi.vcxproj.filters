@@ -27,17 +27,14 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="player.h">
-      <Filter>Исходные файлы\base-structs</Filter>
-    </ClInclude>
-    <ClInclude Include="revolver.h">
-      <Filter>Исходные файлы\base-structs</Filter>
-    </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>Исходные файлы\utils</Filter>
     </ClInclude>
     <ClInclude Include="game.h">
       <Filter>Исходные файлы\game</Filter>
+    </ClInclude>
+    <ClInclude Include="structs.h">
+      <Filter>Исходные файлы\base-structs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

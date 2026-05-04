@@ -1,4 +1,4 @@
-#include "game.h"
+﻿#include "game.h"
 #include "utils.h"
 #include <iostream>
 #include <string>
@@ -6,6 +6,7 @@
 #include <iomanip>
 #include <windows.h>
 #include <conio.h>
+
 
 Player* player = nullptr;
 Revolver* revolver = nullptr;
@@ -34,40 +35,37 @@ void waitingCommand() {
 }
 
 void title() {
-    system("chcp 1251 > nul");
-    system("cls");
-
     setlocale(LC_ALL, "Russian");
     system("cls");
-    std::cout << "РУССКАЯ РУЛЕТКА\n"
-        << "Для начаал игры введите start\n"
-        << "Для выхода введите q\n";
+    std::cout << "RUSSIAN ROULETTE\n"
+        << "To start the game, enter start\n"
+        << "To exit, enter q\n";
     waitingCommand();
 }
 
 void startGame() {
     std::string name{};
-    std::cout << "Введите кол-во игроков (максимум 10): ";
+    std::cout << "Enter the number of players (maximum 10): ";
     std::cin >> playerCount;
     aliveCount = playerCount;
 
     while (playerCount > 10 || playerCount < 2) {
         std::cin.clear();
         std::cin.ignore(32767, '\n');
-        std::cout << "Максимум 10!!!! И не меньше 2!!!!\n";
+        std::cout << "Maximum 10!!!! And not less than 2!!!!\n";
         std::cin >> playerCount;
     }
 
-    std::cout << "Введённое кол-во игрококв: " << std::to_string(playerCount) << std::endl;
+    std::cout << "Number of players entered: " << std::to_string(playerCount) << std::endl;
     player = new Player[playerCount];
-    std::cout << "Введите имя каждому игроку (для подтверждения имени требуется нажaть ENTER):\n";
+    std::cout << "Enter a name for each player (press ENTER to confirm the name):\n";
 
     for (int i = 0; i < playerCount; i++) {
         name = getLimitedInput(10);
         initPlayer(name, i);
     }
 
-    std::cout << "Загрузка игры";
+    std::cout << "Loading game";
 
     for (int i = 0; i < 5; i++) {
         std::cout << ".";
@@ -116,9 +114,9 @@ void gamePlay() {
 
 void gameOver() {
     system("cls");
-    std::cout << "Победитель: " << player[findWinner()].name << std::endl
-        << "Для продолжения игры нажмите любую клавишу\n"
-        << "Для выхода из игры нажмите Enter";
+    std::cout << "Winner: " << player[findWinner()].name << std::endl
+        << "Press any key to continue the game\n"
+        << "Press Enter to exit the game";
 
     if (isEnterPressed()) {
         deletePlayers();
@@ -140,13 +138,13 @@ void shot(int playerIndex) {
     int randomBullet = rand() % 6;
 
     if (randomBullet == revolver->currentPosition) {
-        std::cout << "ВЫСТРЕЛ\n";
+        std::cout << "SHOT\n";
         player[playerIndex].isAlive = false;
         aliveCount--;
         Beep(revolver->sound + 1000, 100);
     }
     else {
-        std::cout << "ОСЕЧКА\n";
+        std::cout << "CLICK\n";
         Beep(revolver->sound, 100);
     }
 }
@@ -155,7 +153,7 @@ int findWinner() {
     for (int i = 0; i < playerCount; i++)
         if (player[i].isAlive)
             return i;
-    return -1; // Добавлен return для всех путей выполнения
+    return -1;
 }
 
 void initPlayer(std::string name, int id) {

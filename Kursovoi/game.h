@@ -1,9 +1,8 @@
-#pragma once
+﻿#pragma once
 #ifndef GAME_H
 #define GAME_H
 
-#include "player.h"
-#include "revolver.h"
+#include "structs.h"
 
 extern Player* player;
 extern Revolver* revolver;
