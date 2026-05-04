@@ -1,0 +1,5 @@
+﻿  Kursovoi.cpp
+F:\prog\C++ program\Kursovoi\Kursovoi\Kursovoi.cpp(53,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+F:\prog\C++ program\Kursovoi\Kursovoi\Kursovoi.cpp(183,9): warning C4551: в вызове функции отсутствует список аргументов
+F:\prog\C++ program\Kursovoi\Kursovoi\Kursovoi.cpp(223,1): warning C4715: findWinner: значение возвращается не при всех путях выполнения
+  Kursovoi.vcxproj -> F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe
