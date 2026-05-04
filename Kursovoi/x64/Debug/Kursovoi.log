@@ -1,4 +1,3 @@
-﻿  Kursovoi.cpp
-F:\prog\C++ program\Kursovoi\Kursovoi\Kursovoi.cpp(55,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-F:\prog\C++ program\Kursovoi\Kursovoi\Kursovoi.cpp(246,1): warning C4715: findWinner: значение возвращается не при всех путях выполнения
+﻿  game.cpp
+  LINK : не найден или не выполнена сборка F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe при последней инкрементной компоновке; выполняется полная компоновка
   Kursovoi.vcxproj -> F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe
