@@ -1,1 +1,7 @@
-﻿  Kursovoi.vcxproj -> F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe
+﻿  Kursovoi.cpp
+F:\prog\C++ program\Kursovoi\Kursovoi\Kursovoi.cpp(8,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  fileManager.cpp
+  game.cpp
+F:\prog\C++ program\Kursovoi\Kursovoi\game.cpp(223,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  Kursovoi.vcxproj -> F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe
