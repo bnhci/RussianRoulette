@@ -14,6 +14,12 @@
     <Filter Include="Исходные файлы\game">
       <UniqueIdentifier>{d547efbe-3cd7-4272-9fe4-a46af0dc7309}</UniqueIdentifier>
     </Filter>
+    <Filter Include="file">
+      <UniqueIdentifier>{c4dcb4c2-5511-4d92-80ba-7dbf6ba3270b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\file-manager">
+      <UniqueIdentifier>{5d17c0d0-0595-4c96-89d7-c6d98f6964a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Kursovoi.cpp">
@@ -24,6 +30,9 @@
     </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Исходные файлы\game</Filter>
+    </ClCompile>
+    <ClCompile Include="fileManager.cpp">
+      <Filter>Исходные файлы\file-manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -36,5 +45,11 @@
     <ClInclude Include="structs.h">
       <Filter>Исходные файлы\base-structs</Filter>
     </ClInclude>
+    <ClInclude Include="fileManager.h">
+      <Filter>Исходные файлы\file-manager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="laederBoard.txt" />
   </ItemGroup>
 </Project>

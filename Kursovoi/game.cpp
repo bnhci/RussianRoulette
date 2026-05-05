@@ -1,4 +1,5 @@
 ﻿#include "game.h"
+#include "fileManager.h"
 #include "utils.h"
 #include <iostream>
 #include <string>
@@ -27,6 +28,9 @@ void waitingCommand() {
             deleteRevolver();
             std::quick_exit(0);
         }
+        else if (command == "lb") {
+            printLB();
+        }
         else {
             std::cout << "Неверная комманда\n";
             waitingCommand();
@@ -39,6 +43,7 @@ void title() {
     system("cls");
     std::cout << "RUSSIAN ROULETTE\n"
         << "To start the game, enter start\n"
+        << "To open leaderBoard, enter lb\n"
         << "To exit, enter q\n";
     waitingCommand();
 }
@@ -192,4 +197,31 @@ void printGame(int playerIndex) {
             std::cout << "{ " << player[i].name << " }\n";
         }
     }
+}
+
+void printLB() {
+    system("cls");
+    std::string* leaderBoard = readFile();
+    int count = getCountLine();
+
+    for (int i = 0; i < count; i++) {
+        std::string name{};
+        std::string score{};
+
+        size_t tabPos = leaderBoard[i].find('\t');
+
+        if (tabPos != std::string::npos) {
+            name = leaderBoard[i].substr(0, tabPos);
+            score = leaderBoard[i].substr(tabPos + 1);
+        }
+        else {
+            name = leaderBoard[i];
+            score = "0";
+        }
+        std::cout << (i + 1) << ". " << name << ": " << score << std::endl;
+    }
+
+    Sleep(3000);
+
+    title();
 }

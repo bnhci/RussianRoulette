@@ -26,4 +26,7 @@ void printGame(int playerIndex);
 bool isEnterPressed();
 std::string getLimitedInput(int maxLength);
 
+void printLB();
+void addScore();
+
 #endif
