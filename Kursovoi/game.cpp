@@ -32,7 +32,7 @@ void waitingCommand() {
             printLB();
         }
         else {
-            std::cout << "Unckonw command\n";
+            std::cout << "Unknown command\n";
             waitingCommand();
         }
     }
@@ -66,7 +66,7 @@ void startGame() {
     std::cout << "Enter a name for each player (press ENTER to confirm the name):\n";
 
     for (int i = 0; i < playerCount; i++) {
-        name = getLimitedInput(10);
+        name = getLimitedInput(20);
         initPlayer(name, i);
     }
 
@@ -123,6 +123,8 @@ void gameOver() {
         << "Press any key to continue the game\n"
         << "Press Enter to exit the game";
 
+    updateLeaderboard();
+
     if (isEnterPressed()) {
         deletePlayers();
         deleteRevolver();
@@ -152,6 +154,8 @@ void shot(int playerIndex) {
         std::cout << "CLICK\n";
         Beep(revolver->sound, 100);
     }
+
+    player[playerIndex].countStep++;
 }
 
 int findWinner() {
@@ -164,6 +168,7 @@ int findWinner() {
 void initPlayer(std::string name, int id) {
     player[id].name = name;
     player[id].id = id;
+    player[id].countStep = 0;
     player[id].isAlive = true;
 }
 
@@ -232,4 +237,70 @@ void printLB() {
 
     Sleep(3000);
     title();
+}
+
+
+void updateLeaderboard() {
+    readFile();
+    int existingCount = getCountLine();
+    std::string* existingList = getList();
+
+    std::string allNames[100];
+    int allSteps[100];
+    int allSize = 0;
+
+    for (int i = 0; i < existingCount; i++) {
+        size_t tabPos = existingList[i].find('\t');
+        if (tabPos != std::string::npos) {
+            allNames[allSize] = existingList[i].substr(0, tabPos);
+            allSteps[allSize] = std::stoi(existingList[i].substr(tabPos + 1));
+            allSize++;
+        }
+    }
+
+    for (int i = 0; i < playerCount; i++) {
+        bool found = false;
+        for (int j = 0; j < allSize; j++) {
+            if (allNames[j] == player[i].name) {
+                if (player[i].countStep > allSteps[j]) {
+                    allSteps[j] = player[i].countStep;
+                }
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            allNames[allSize] = player[i].name;
+            allSteps[allSize] = player[i].countStep;
+            allSize++;
+        }
+    }
+
+    for (int i = 0; i < allSize - 1; i++) {
+        for (int j = 0; j < allSize - i - 1; j++) {
+            if (allSteps[j] < allSteps[j + 1]) {
+
+                int tempStep = allSteps[j];
+                allSteps[j] = allSteps[j + 1];
+                allSteps[j + 1] = tempStep;
+
+                std::string tempName = allNames[j];
+                allNames[j] = allNames[j + 1];
+                allNames[j + 1] = tempName;
+            }
+        }
+    }
+
+    std::string* names = new std::string[allSize];
+    std::string* stepsStr = new std::string[allSize];
+
+    for (int i = 0; i < allSize; i++) {
+        names[i] = allNames[i];
+        stepsStr[i] = std::to_string(allSteps[i]);
+    }
+
+    writeFile(names, stepsStr, allSize);
+
+    delete[] names;
+    delete[] stepsStr;
 }

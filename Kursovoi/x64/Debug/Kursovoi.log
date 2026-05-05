@@ -1,3 +1,1 @@
-﻿  game.cpp
-F:\prog\C++ program\Kursovoi\Kursovoi\game.cpp(219,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-  Kursovoi.vcxproj -> F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe
+﻿  Kursovoi.vcxproj -> F:\prog\C++ program\Kursovoi\x64\Debug\Kursovoi.exe

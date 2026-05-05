@@ -27,6 +27,6 @@ bool isEnterPressed();
 std::string getLimitedInput(int maxLength);
 
 void printLB();
-void addScore();
+void updateLeaderboard();
 
 #endif

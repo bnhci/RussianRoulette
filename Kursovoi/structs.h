@@ -7,6 +7,7 @@
 struct Player {
     std::string name;
     int id;
+    int countStep;
     bool isAlive;
 };
 

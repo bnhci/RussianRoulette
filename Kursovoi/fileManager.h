@@ -10,6 +10,7 @@ extern const std::string fileName;
 std::string* readFile();
 void writeFile(const std::string* arr, const std::string* score, int size);
 int getCountLine();
+std::string* getList();
 
 
 #endif

@@ -58,3 +58,7 @@ void writeFile(const std::string* name, const std::string* score, int size) {
 int getCountLine() {
 	return countLine;
 }
+
+std::string* getList() {
+    return oldList;
+}
