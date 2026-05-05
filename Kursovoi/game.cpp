@@ -32,7 +32,7 @@ void waitingCommand() {
             printLB();
         }
         else {
-            std::cout << "Неверная комманда\n";
+            std::cout << "Unckonw command\n";
             waitingCommand();
         }
     }
