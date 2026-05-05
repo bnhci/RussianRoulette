@@ -33,7 +33,7 @@ std::string* readFile() {
 
     for (int i = 0; i < countLine; i++) {
         std::getline(tableReference, line);
-        oldList[i] = line;  // Сохраняем "Имя\tСчет"
+        oldList[i] = line;  
     }
 
     tableReference.close();
@@ -44,7 +44,6 @@ void writeFile(const std::string* name, const std::string* score, int size) {
     std::ofstream file(fileName, std::ios::trunc);
 
     for (int i = 0; i < size; i++) {
-        // Формат: "Имя\tСчет"
         file << name[i] << "\t" << score[i] << "\n";
     }
 

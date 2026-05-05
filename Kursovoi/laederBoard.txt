@@ -1,4 +1,3 @@
 GOD	999
-DiosaurFL	5
-IVAN Cookie_c	5
-aboba	4
+DiosaurFL	11
+IVAN Cookie_c	8

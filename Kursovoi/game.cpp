@@ -220,7 +220,6 @@ void printLB() {
         std::string name{};
         std::string score{};
 
-        // Парсим "Имя\tСчет"
         int tabPos = leaderBoard[i].find('\t');
 
         if (tabPos != std::string::npos) {
