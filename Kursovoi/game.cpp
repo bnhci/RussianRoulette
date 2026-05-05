@@ -204,11 +204,19 @@ void printLB() {
     std::string* leaderBoard = readFile();
     int count = getCountLine();
 
+    if (leaderBoard == nullptr || count == 0) {
+        std::cout << "Leaderboard is empty!\n";
+        Sleep(2000);
+        title();
+        return;
+    }
+
     for (int i = 0; i < count; i++) {
         std::string name{};
         std::string score{};
 
-        size_t tabPos = leaderBoard[i].find('\t');
+        // Парсим "Имя\tСчет"
+        int tabPos = leaderBoard[i].find('\t');
 
         if (tabPos != std::string::npos) {
             name = leaderBoard[i].substr(0, tabPos);
@@ -218,10 +226,10 @@ void printLB() {
             name = leaderBoard[i];
             score = "0";
         }
+
         std::cout << (i + 1) << ". " << name << ": " << score << std::endl;
     }
 
     Sleep(3000);
-
     title();
 }

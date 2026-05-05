@@ -1,18 +1,17 @@
-#include "fileManager.h"
+#include <iostream>
 #include <fstream>
+#include <string>
 
-const std::string fileName = "leaderBoard.txt";
+const std::string fileName = "F:\\prog\\C++ program\\Kursovoi\\Kursovoi\\laederBoard.txt";
 int countLine = 0;
 std::string* oldList = nullptr;
 
 std::string* readFile() {
-    std::string bufferName{};
-    std::string bufferScore{};
     countLine = 0;
-
     std::ifstream tableReference(fileName);
-    
+
     if (!tableReference.is_open()) {
+        std::cout << "close";
         return nullptr;
     }
 
@@ -20,6 +19,7 @@ std::string* readFile() {
     while (std::getline(tableReference, line)) {
         countLine++;
     }
+
 
     if (countLine == 0) {
         tableReference.close();
@@ -33,7 +33,7 @@ std::string* readFile() {
 
     for (int i = 0; i < countLine; i++) {
         std::getline(tableReference, line);
-        oldList[i] = line;
+        oldList[i] = line;  // Сохраняем "Имя\tСчет"
     }
 
     tableReference.close();
@@ -41,18 +41,19 @@ std::string* readFile() {
 }
 
 void writeFile(const std::string* name, const std::string* score, int size) {
-	std::ofstream file(fileName, std::ios::trunc);
+    std::ofstream file(fileName, std::ios::trunc);
 
-	for (int i = 0; i < size; i++) {
-		file << (i + 1) << ". " << name[i] << "\t:\t" << score[i] << "\n";
-	}
+    for (int i = 0; i < size; i++) {
+        // Формат: "Имя\tСчет"
+        file << name[i] << "\t" << score[i] << "\n";
+    }
 
-	file.close();
-
-	delete[] oldList;
-	oldList = nullptr;
-
+    file.close();
+    delete[] oldList;
+    oldList = nullptr;
+    countLine = 0;
 }
+
 
 int getCountLine() {
 	return countLine;
